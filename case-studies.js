@@ -105,7 +105,7 @@
         return `<tr><td class="q-n">${q.n}</td><td class="q-t">${esc(q.text)}</td>${cells}</tr>`;
       }).join('');
       prompt = (inp.spans ? annotatedPrompt(inp, c.models) : '') + `<details class="cs-prompt" open><summary>Instruction-following checklist — ${inp.questions.length} yes/no questions</summary>
-        <table class="cs-checklist"><thead><tr><th class="q-n">#</th><th>Question</th>${heads}</tr></thead><tbody>${rows}</tbody></table></details>`;
+        <div class="cs-table-scroll" tabindex="0" role="region" aria-label="Scroll instruction-following checklist horizontally"><table class="cs-checklist"><thead><tr><th class="q-n">#</th><th>Question</th>${heads}</tr></thead><tbody>${rows}</tbody></table></div></details>`;
     } else if (inp.type === 'annotated-prompt') {
       prompt = annotatedPrompt(inp, c.models);
     } else if (inp.prompt) {

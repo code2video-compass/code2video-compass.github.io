@@ -315,7 +315,8 @@ mark.mk-both{background:rgba(190,60,60,.15);color:#8f3030;border-bottom:3px soli
 .cs-zoom:hover{background:rgba(13,17,23,.8)}
 
 /* IF checklist table */
-.cs-checklist{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+.cs-table-scroll{width:100%;max-width:100%;overflow-x:auto;margin-top:10px;-webkit-overflow-scrolling:touch}
+.cs-checklist{width:100%;min-width:640px;border-collapse:collapse;font-size:13px}
 .cs-checklist th,.cs-checklist td{border-bottom:1px solid var(--line-soft);padding:7px 10px;text-align:left;vertical-align:top}
 .cs-checklist thead th{font-size:12px;font-weight:700;color:var(--ink-soft);border-bottom:1.5px solid var(--line);white-space:nowrap}
 .cs-checklist .q-n{width:34px;color:var(--ink-mute);font-variant-numeric:tabular-nums;text-align:right}
