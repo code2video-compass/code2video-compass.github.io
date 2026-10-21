@@ -882,7 +882,7 @@ window.C2V_CASES = {
    "task": "i2v",
    "sample": "010457dd306493e691ec2972",
    "title": "Eight motion studies: data, runner, extrusion and particles",
-   "desc": "Haiku moves from a jumping runner into changing extruded bars. MiniMax animates sparse blue blocks; Gemini shows a mostly flat grid before a dark transition.",
+   "desc": "Haiku develops an extruded-bar study through changing geometric patterns. MiniMax animates sparse blue blocks; Gemini shows a mostly flat grid before a dark transition.",
    "metrics": [
     "MT"
    ],
@@ -892,7 +892,7 @@ window.C2V_CASES = {
      "name": "Claude Haiku 5.5",
      "rank": "high",
      "clip": [
-      15,
+      16.2,
       19
      ],
      "video": "assets/case_studies/MT-1/claude-haiku-5-5.mp4",
