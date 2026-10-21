@@ -37,12 +37,17 @@
     '<span><a href="http://simingchen.me" target="_blank" rel="noopener">Siming Chen</a><sup>1</sup></span></span>';
   $('affiliations').hidden=false;
   $('affiliations').innerHTML='<sup>1</sup>Fudan University&ensp;&ensp;<sup>2</sup>Sun Yat-sen University';
-  // dataset stays a "coming soon" ghost pill even if a URL lands in the data
-  for(const [key,id,label] of [['github','code-link','Code']]){
+  for(const [key,id,label] of [['arxiv','arxiv-link','arXiv'],['paper','paper-link','Paper'],['github','code-link','Code']]){
     const url=d.project.links[key];
-    if(url?.startsWith('https://')){const a=document.createElement('a');a.className='pill';a.href=url;a.textContent='[ '+label+' ]';a.target='_blank';a.rel='noopener';$(id).replaceWith(a);}
+    if(url){const a=document.createElement('a');a.className='pill';a.href=url;a.textContent='[ '+label+' ]';a.target='_blank';a.rel='noopener';$(id).replaceWith(a);}
   }
-  if(d.project.citation){$('citation').hidden=false;$('bibtex').textContent=d.project.citation;}
+  if(d.project.citation){$('bibtex').textContent=d.project.citation;}
+  $('copy-bibtex').addEventListener('click',async()=>{
+    const label=$('copy-bibtex-label');
+    try{await navigator.clipboard.writeText($('bibtex').textContent);label.textContent='Copied';}
+    catch{const range=document.createRange();range.selectNodeContents($('bibtex'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);label.textContent='Select and copy';}
+    window.setTimeout(()=>{label.textContent='Copy';},1800);
+  });
 
   const raw=(model,metric,s)=>d.results.find(r=>r.model===model.id&&r.setting===s)?.metrics?.[metric];
   const score=(model,metric,s=setting)=>{
