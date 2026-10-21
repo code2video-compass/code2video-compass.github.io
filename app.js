@@ -10,7 +10,7 @@
     'Text alignment':['Objective','Text Alignment'],'Image fidelity':['Objective','Image Fidelity'],
     'Clip fidelity':['Objective','Clip Fidelity'],'Instruction following':['Subjective','Instr. Follow.'],
     'Holistic quality':['Subjective','Holistic Video Quality']};
-  const tierColor={'Objective':'#5b5470','Subjective':'#23806b'};
+  const tierColor={'Objective':'#35840D','Subjective':'#ECA138'};
   const subColor={'Operational':'#59667a','Video Quality':'#2e6679','Text Alignment':'#6b618b',
     'Image Fidelity':'#527a70','Clip Fidelity':'#89704e','Instr. Follow.':'#4c6b8f',
     'Holistic Video Quality':'#7d5a86'};
@@ -37,7 +37,7 @@
     '<span><a href="http://simingchen.me" target="_blank" rel="noopener">Siming Chen</a><sup>1</sup></span></span>';
   $('affiliations').hidden=false;
   $('affiliations').innerHTML='<sup>1</sup>Fudan University&ensp;&ensp;<sup>2</sup>Sun Yat-sen University';
-  for(const [key,id,label] of [['arxiv','arxiv-link','arXiv'],['paper','paper-link','Paper'],['github','code-link','Code']]){
+  for(const [key,id,label] of [['arxiv','arxiv-link','arXiv'],['paper','paper-link','Paper'],['github','code-link','Code'],['dataset','dataset-link','Hugging Face']]){
     const url=d.project.links[key];
     if(url){const a=document.createElement('a');a.className='pill';a.href=url;a.textContent='[ '+label+' ]';a.target='_blank';a.rel='noopener';$(id).replaceWith(a);}
   }
