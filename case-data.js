@@ -758,7 +758,7 @@ window.C2V_CASES = {
    "task": "v2v",
    "sample": "12d3190021bddfdc77975dbc",
    "title": "2D-to-3D Animation Showreel",
-   "desc": "Opus and Haiku show several stages beyond the reference ring. Luna concentrates on the 2D/3D ring sequence and omits much of the requested showreel.",
+   "desc": "Opus and Haiku show stages beyond the reference ring. Haiku simplifies the cylindrical pillar volume and beveled closing letters. Luna concentrates on the 2D/3D ring sequence and omits much of the requested showreel.",
    "metrics": [
     "L-TVA",
     "G-TVA"
@@ -823,11 +823,34 @@ window.C2V_CASES = {
       ]
      },
      {
-      "t": "\n\nThe animation then reproduces the exact behavior of the reference clip: an overhead dotted ring rapidly fills clockwise with blue dots as a numerical percentage counts from 12% to 100% next to bold black '2D' text annotated in red cursive with '(for now.)'. Upon reaching 100%, the viewpoint tilts downwards into dramatic 3D perspective, extruding the dotted ring into a procedural circular wave of tall blue cylindrical pillars that oscillate up and down like an audio visualizer. In the center, the blue sphere bounces with onion-skin trajectory rings, while the bold typography flips into extruded '3D' block letters and the camera orbits smoothly around the circular array following a curved floor guide labeled 'orbit'.\n\n",
+      "t": "\n\nThe animation then reproduces the exact behavior of the reference clip: an overhead dotted ring rapidly fills clockwise with blue dots as a numerical percentage counts from 12% to 100% next to bold black '2D' text annotated in red cursive with '(for now.)'. Upon reaching 100%, the viewpoint tilts downwards into dramatic 3D perspective, extruding the dotted ring into ",
       "m": []
      },
      {
-      "t": "Continuing past the reference clip, the scene shifts to an extruded 3D phrase 'I MAKE THINGS MOVE' toppling onto a perspective grid as a camera dolly zoom warps spatial perspective with an FoV counter rising from 28° to 80°. The scene opens into a vast procedural terrain of black dots undulating in ripples around the bouncing sphere, transitioning through an expansive radial particle vortex. Quick-cut 3D kinetic typography showcases 'BOUNCE', 'STRETCH', 'SPIN', and 'SNAP' interacting dynamically with dimensional grids. Finally, heavy 3D beveled letters spelling 'CLAUDE' land upright on a clean studio floor, alongside the bouncing blue sphere, an animated cursive subtitle 'motion designer', and a playful red call-to-action arrow reading '(hire me.)",
+      "t": "a procedural circular wave of tall blue cylindrical pillars that oscillate up and down like an audio visualizer",
+      "m": [
+       "T4"
+      ]
+     },
+     {
+      "t": ". In the center, the blue sphere bounces with onion-skin trajectory rings, while the bold typography flips into extruded '3D' block letters and the camera orbits smoothly around the circular array following a curved floor guide labeled 'orbit'.\n\n",
+      "m": []
+     },
+     {
+      "t": "Continuing past the reference clip, the scene shifts to an extruded 3D phrase 'I MAKE THINGS MOVE' toppling onto a perspective grid as a camera dolly zoom warps spatial perspective with an FoV counter rising from 28° to 80°. The scene opens into a vast procedural terrain of black dots undulating in ripples around the bouncing sphere, transitioning through an expansive radial particle vortex. Quick-cut 3D kinetic typography showcases 'BOUNCE', 'STRETCH', 'SPIN', and 'SNAP' interacting dynamically with dimensional grids. Finally, ",
+      "m": [
+       "T3"
+      ]
+     },
+     {
+      "t": "heavy 3D beveled letters spelling 'CLAUDE'",
+      "m": [
+       "T3",
+       "T5"
+      ]
+     },
+     {
+      "t": " land upright on a clean studio floor, alongside the bouncing blue sphere, an animated cursive subtitle 'motion designer', and a playful red call-to-action arrow reading '(hire me.)",
       "m": [
        "T3"
       ]
@@ -867,6 +890,35 @@ window.C2V_CASES = {
       "note": "The closing 3D kinetic typography, terrain, vortex and branding segments after the reference clip are not covered.",
       "short": "the closing 3D act — typography, terrain, vortex, branding — is missing",
       "questions": []
+     },
+     {
+      "start": 1159,
+      "end": 1270,
+      "severity": "partial",
+      "id": "T4",
+      "rank": "mid",
+      "note": "Mid shows oscillating blue strokes arranged in a ring; the cylindrical volume of the requested pillars is not clearly visible.",
+      "short": "the oscillating ring is present, but cylindrical pillar volume is unclear",
+      "questions": [],
+      "evidence_times_s": [
+       13,
+       15,
+       16
+      ]
+     },
+     {
+      "start": 2050,
+      "end": 2092,
+      "severity": "partial",
+      "id": "T5",
+      "rank": "mid",
+      "note": "Mid shows flat-faced closing letters with blue offset depth; the requested beveled edges are not clearly visible.",
+      "short": "the closing letters show offset depth, but no clear beveled edges",
+      "questions": [],
+      "evidence_times_s": [
+       29,
+       30
+      ]
      }
     ],
     "legend": {
