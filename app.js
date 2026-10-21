@@ -36,7 +36,9 @@
     '<span>Leting Cheng<sup>1</sup></span>'+
     '<span><a href="http://simingchen.me" target="_blank" rel="noopener">Siming Chen</a><sup>1</sup></span></span>';
   $('affiliations').hidden=false;
-  $('affiliations').innerHTML='<sup>1</sup>Fudan University&ensp;&ensp;<sup>2</sup>Sun Yat-sen University';
+  $('affiliations').innerHTML=
+    '<sup>1</sup><a class="uni" href="https://www.fudan.edu.cn/" target="_blank" rel="noopener" title="Fudan University — www.fudan.edu.cn"><img src="assets/fudan-logo.png" alt="Fudan University"></a>&ensp;&ensp;'+
+    '<sup>2</sup><a class="uni" href="https://www.sysu.edu.cn/" target="_blank" rel="noopener" title="Sun Yat-sen University — www.sysu.edu.cn"><img src="assets/sysu-logo.png" alt="Sun Yat-sen University"></a>';
   for(const [key,id,label] of [['arxiv','arxiv-link','arXiv'],['paper','paper-link','Paper']]){
     const url=d.project.links[key];
     if(url){const a=document.createElement('a');a.className='pill';a.href=url;a.textContent='[ '+label+' ]';a.target='_blank';a.rel='noopener';$(id).replaceWith(a);}
