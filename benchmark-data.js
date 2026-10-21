@@ -14,8 +14,8 @@ window.COMPASS_DATA = {
     "affiliations": [],
     "links": {
       "paper": "assets/paper.pdf",
-      "github": null,
-      "dataset": null,
+      "github": "https://github.com/code2video-compass/Code2Video-Compass",
+      "dataset": "https://huggingface.co/datasets/code2video-compass/Code2Video-Compass",
       "arxiv": "https://arxiv.org/abs/2610.28416",
       "website": null
     },
