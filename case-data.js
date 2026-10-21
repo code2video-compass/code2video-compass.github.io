@@ -685,7 +685,7 @@ window.C2V_CASES = {
    ],
    "input": {
     "type": "annotated-prompt",
-    "prompt": "An educational hand-drawn motion graphics timeline traces the evolution of large language models on a light beige textured ground. Prior to the reference clip, the animation covers the introduction of token prediction, the 2017 Transformer attention mechanism, the hatching of the speech-bubble mascot in GPT-1, staged safety releases in GPT-2, massive parameter scaling in GPT-3, RLHF alignment in InstructGPT, ChatGPT's multi-task chat explosion, GPT-4's browser demo, and GPT-4o's real-time sensory circles.\n\nThe animation then transitions into the dynamic sequence shown in the reference clip: at milestone \"o1 2024.9.12\", a thought cloud appears above the green mascot's head under the heading \"Think first, answer second\". The cloud rapidly expands, filling the frame with a dark navy grid background. At the top right, a stopwatch indicator counts upward (\"Thought for 0 s\" up to \"Thought for 8 s\"). Sketched white chalk diagrams and handwritten equations solve the classic word problem step by step: \"A bat and a ball cost 1.10 in total; the bat costs 1 more than the ball. What does the ball cost?\", rejecting the intuitive \"Intuition: 0.10?\" and working through \"x + (x+1) = 1.10 -> x = 0.05\" until \"Ball = 0.05\" is circled in yellow.\n\nFollowing this clip, the thought window snaps back into the cloud as the mascot pops back onto the main timeline cheerfully shouting \"The ball is five cents!\". The journey proceeds into GPT-5's routing system merging fast and slow thinkers, a rapid sequence of version updates (GPT-5.1 through GPT-5.6) flashing across the timeline, and concludes under a starry twilight gradient sky for GPT-6 Astra, typing the final line \"The next word is still being written.\".",
+    "prompt": "An educational hand-drawn motion graphics timeline traces the evolution of large language models on a light beige textured ground. Prior to the reference clip, the animation covers the introduction of token prediction, the 2017 Transformer attention mechanism, the hatching of the speech-bubble mascot in GPT-1, staged safety releases in GPT-2, massive parameter scaling in GPT-3, RLHF alignment in InstructGPT, ChatGPT's multi-task chat explosion, GPT-4's browser demo, and GPT-4o's real-time sensory circles.\n\nThe animation then transitions into the dynamic sequence shown in the reference clip: at milestone \"o1 2024.9.12\", a thought cloud appears above the green mascot's head under the heading \"先想，再回答\". The cloud rapidly expands, filling the frame with a dark navy grid background. At the top right, a stopwatch indicator counts upward (\"已思考 0 秒\" up to \"已思考 8 秒\"). Sketched white chalk diagrams and handwritten equations solve the classic word problem step by step: \"一支球拍加一个球，一共 1.10 元；球拍比球贵 1 元。球多少钱？\", rejecting the intuitive \"直觉：0.10 元？\" and working through \"x + (x+1) = 1.10 -> x = 0.05\" until \"球 = 0.05\" is circled in yellow.\n\nFollowing this clip, the thought window snaps back into the cloud as the mascot pops back onto the main timeline cheerfully shouting \"球是 5 分钱！\". The journey proceeds into GPT-5's routing system merging fast and slow thinkers, a rapid sequence of version updates (GPT-5.1 through GPT-5.6) flashing across the timeline, and concludes under a starry twilight gradient sky for GPT-6 Astra, typing the final line \"下一个字，还在写。\".",
     "spans": [
      {
       "t": "An educational hand-drawn motion graphics timeline traces the evolution of large language models on a light beige textured ground. ",
@@ -694,16 +694,16 @@ window.C2V_CASES = {
      {
       "t": "Prior to the reference clip, the animation covers the introduction of token prediction, the 2017 Transformer attention mechanism, the hatching of the speech-bubble mascot in GPT-1, staged safety releases in GPT-2, massive parameter scaling in GPT-3, RLHF alignment in InstructGPT, ChatGPT's multi-task chat explosion, GPT-4's browser demo, and GPT-4o's real-time sensory circles.",
       "m": [
-       "M1",
-       "T1"
+       "T1",
+       "M1"
       ]
      },
      {
-      "t": "\n\nThe animation then transitions into the dynamic sequence shown in the reference clip: at milestone \"o1 2024.9.12\", a thought cloud appears above the green mascot's head under the heading \"Think first, answer second\". The cloud rapidly expands, filling the frame with a dark navy grid background. At the top right, a stopwatch indicator counts upward (\"Thought for 0 s\" up to \"Thought for 8 s\"). Sketched white chalk diagrams and handwritten equations solve the classic word problem step by step: \"A bat and a ball cost 1.10 in total; the bat costs 1 more than the ball. What does the ball cost?\", rejecting the intuitive \"Intuition: 0.10?\" and working through \"x + (x+1) = 1.10 -> x = 0.05\" until \"Ball = 0.05\" is circled in yellow.\n\n",
+      "t": "\n\nThe animation then transitions into the dynamic sequence shown in the reference clip: at milestone \"o1 2024.9.12\", a thought cloud appears above the green mascot's head under the heading \"先想，再回答\". The cloud rapidly expands, filling the frame with a dark navy grid background. At the top right, a stopwatch indicator counts upward (\"已思考 0 秒\" up to \"已思考 8 秒\"). Sketched white chalk diagrams and handwritten equations solve the classic word problem step by step: \"一支球拍加一个球，一共 1.10 元；球拍比球贵 1 元。球多少钱？\", rejecting the intuitive \"直觉：0.10 元？\" and working through \"x + (x+1) = 1.10 -> x = 0.05\" until \"球 = 0.05\" is circled in yellow.\n\n",
       "m": []
      },
      {
-      "t": "Following this clip, the thought window snaps back into the cloud as the mascot pops back onto the main timeline cheerfully shouting \"The ball is five cents!\". The journey proceeds into GPT-5's routing system merging fast and slow thinkers, a rapid sequence of version updates (GPT-5.1 through GPT-5.6) flashing across the timeline, and concludes under a starry twilight gradient sky for GPT-6 Astra, typing the final line \"The next word is still being written.",
+      "t": "Following this clip, the thought window snaps back into the cloud as the mascot pops back onto the main timeline cheerfully shouting \"球是 5 分钱！\". The journey proceeds into GPT-5's routing system merging fast and slow thinkers, a rapid sequence of version updates (GPT-5.1 through GPT-5.6) flashing across the timeline, and concludes under a starry twilight gradient sky for GPT-6 Astra, typing the final line \"下一个字，还在写。",
       "m": [
        "T2"
       ]
@@ -735,8 +735,8 @@ window.C2V_CASES = {
       "questions": []
      },
      {
-      "start": 1246,
-      "end": 1707,
+      "start": 1138,
+      "end": 1556,
       "severity": "missing",
       "id": "T2",
       "rank": "low",
