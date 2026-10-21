@@ -37,7 +37,7 @@
     '<span><a href="http://simingchen.me" target="_blank" rel="noopener">Siming Chen</a><sup>1</sup></span></span>';
   $('affiliations').hidden=false;
   $('affiliations').innerHTML='<sup>1</sup>Fudan University&ensp;&ensp;<sup>2</sup>Sun Yat-sen University';
-  for(const [key,id,label] of [['arxiv','arxiv-link','arXiv'],['paper','paper-link','Paper'],['github','code-link','Code'],['dataset','dataset-link','Hugging Face']]){
+  for(const [key,id,label] of [['arxiv','arxiv-link','arXiv'],['paper','paper-link','Paper']]){
     const url=d.project.links[key];
     if(url){const a=document.createElement('a');a.className='pill';a.href=url;a.textContent='[ '+label+' ]';a.target='_blank';a.rel='noopener';$(id).replaceWith(a);}
   }
