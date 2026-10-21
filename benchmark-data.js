@@ -15,7 +15,7 @@ window.COMPASS_DATA = {
     "links": {
       "paper": "assets/paper.pdf",
       "github": null,
-      "dataset": "https://huggingface.co/datasets/Liguyanger/Code2Video-Compass",
+      "dataset": null,
       "arxiv": "https://arxiv.org/abs/2610.28416",
       "website": null
     },
