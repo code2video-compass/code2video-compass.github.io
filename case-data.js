@@ -246,7 +246,7 @@ window.C2V_CASES = {
       "key": "I2V-2",
       "task": "i2v",
       "sample": "59e37cdc722e94efc8acd945",
-      "title": "Titanic, Iceberg and Aurora in a Bottle",
+      "title": "Titanic Bottle Diorama",
       "desc": "Compare the ship, bottle, iceberg and aurora with the reference frame, including proportions, framing and lighting.",
       "metrics": [
         "PF",
@@ -417,7 +417,7 @@ window.C2V_CASES = {
       "key": "V2V-1",
       "task": "v2v",
       "sample": "youtube_R34_78b15ba5d26f",
-      "title": "Bright Lab with an Alien Character",
+      "title": "Alien Laboratory",
       "desc": "Astra retains the bright lab and colored characters. MiMo uses simplified lab geometry; the Qwen excerpt shows a sparse seated-character scene.",
       "metrics": [
         "SA",
@@ -488,7 +488,7 @@ window.C2V_CASES = {
       "key": "V2V-2",
       "task": "v2v",
       "sample": "e0e13ac6da65b2d00ca01284",
-      "title": "Girl, Kite and Aerial Meadow",
+      "title": "Girl and Kite",
       "desc": "Astra retains the girl, kite and elevated meadow view. DeepSeek changes the viewpoint and layout; the Kimi excerpt shows terrain without the girl or kite.",
       "metrics": [
         "SA",
@@ -717,7 +717,7 @@ window.C2V_CASES = {
       "key": "TA-2",
       "task": "v2v",
       "sample": "12d3190021bddfdc77975dbc",
-      "title": "2D-to-3D Animation Showreel",
+      "title": "2D and 3D Animation Showreel",
       "desc": "Opus and Haiku show stages beyond the reference ring. Haiku simplifies the cylindrical pillar volume and beveled closing letters. Luna concentrates on the 2D/3D ring sequence and omits much of the requested showreel.",
       "metrics": [
         "L-TVA",
@@ -767,7 +767,7 @@ window.C2V_CASES = {
       "key": "MT-1",
       "task": "i2v",
       "sample": "010457dd306493e691ec2972",
-      "title": "Eight motion studies: data, runner, extrusion and particles",
+      "title": "Motion Studies",
       "desc": "Haiku develops an extruded-bar study through changing geometric patterns. MiniMax animates sparse blue blocks; Gemini shows a mostly flat grid before a dark transition.",
       "metrics": [
         "MT"
@@ -826,7 +826,7 @@ window.C2V_CASES = {
       "key": "MT-2",
       "task": "v2v",
       "sample": "RTA-0381",
-      "title": "Turbulent liquid: surface deformation and dispersed micro-droplets",
+      "title": "Turbulent Liquid",
       "desc": "Astra has dense, changing fluid-like surface detail and dispersed droplets. Opus shows a smoother deforming blob. MiniMax shows repeated large rounded lobes with little local deformation in the reviewed focus window.",
       "metrics": [
         "MT"
@@ -885,7 +885,7 @@ window.C2V_CASES = {
       "key": "NC-4",
       "task": "i2v",
       "sample": "daec8de95c9be83e46168f19",
-      "title": "Mid-Autumn: sunset river to illuminated pavilion",
+      "title": "Mid-Autumn River Pavilion",
       "desc": "Sol connects sunset, the moonlit pavilion, lanterns and poetry through successive scene changes. DeepSeek retains the broad stage order. MiniMax repeats the city-and-moon composition before introducing a simplified pavilion.",
       "metrics": [
         "NC"
@@ -932,7 +932,7 @@ window.C2V_CASES = {
       "key": "VE-2",
       "task": "t2v",
       "sample": "b461318919760d7ae4507530",
-      "title": "Cosmic future: Earth to final evaporation",
+      "title": "Cosmic Evolution",
       "desc": "Astra develops varied Earth, eclipse, galaxy and later astronomical scenes. Haiku keeps a simplified but complete progression. GLM has a sparse merger passage and an Earth texture that appears as a rectangular card, weakening the visual reveal.",
       "metrics": [
         "VE"
@@ -979,7 +979,7 @@ window.C2V_CASES = {
       "key": "VD-1",
       "task": "i2v",
       "sample": "61173ec0e2f7f7b8f979c377",
-      "title": "DubStemMix: typography and audio mixer interface",
+      "title": "DubStemMix Audio Interface",
       "desc": "Opus separates the title, mixer and routing layouts. MiniMax shows a clipped heading and crowded elements. Qwen repeatedly overlays large headings on mixer and waveform content.",
       "metrics": [
         "VD"
@@ -1026,7 +1026,7 @@ window.C2V_CASES = {
       "key": "IF-1",
       "task": "v2v",
       "sample": "ff864d9d7f3c73292b530d98",
-      "title": "Kinetic promo: app, story, gallery and closing CTA",
+      "title": "Kinetic Product Promo",
       "desc": "Opus covers the opening scenes, Just ask gallery and closing card. MiniMax has a black code-fix interval, unclear gallery dimming and an unverified final click. Sonnet ends at the code scene, omitting the later tunnel, gallery and closing card.",
       "metrics": [
         "IF"
@@ -1185,22 +1185,22 @@ window.C2V_CASES = {
       "key": "SK-3D-01",
       "task": "i2v",
       "sample": "b791bb668217c187b6e13925",
-      "title": "GPU: server rack to atom",
+      "title": "GPU Scale Journey",
       "label": "Content Coherence-example2",
-      "desc": "Qwen-Max covers the rack, GPU, transistor and atom stages. Sol omits some transitions. In Sonnet, later labels return to transistor/GPU/rack while the visible geometry remains an atom array, creating a concrete content-stage mismatch.",
+      "desc": "Opus follows the data center, rack, GPU, transistor and atomic-lattice stages, then returns to the data-center hall. Sol omits some intermediate stages. Sonnet leaves the atom array visible while its labels return to transistor, GPU and rack stages.",
       "metrics": [
         "NC"
       ],
       "models": [
         {
-          "id": "qwen_3_8_max",
-          "name": "Qwen3.8-Max",
+          "id": "claude-opus-5-5",
+          "name": "Claude Opus 5.5",
+          "rank": "high",
           "scores": {
             "NC": 5.0
           },
-          "rank": "high",
-          "video": "assets/case_studies/skeuomorphic/3D-01/qwen_3_8_max/video.mp4",
-          "vposter": "assets/case_studies/skeuomorphic/3D-01/qwen_3_8_max/poster.png"
+          "video": "assets/case_studies/skeuomorphic/3D-01/claude_opus_5_5/video.mp4",
+          "vposter": "assets/case_studies/skeuomorphic/3D-01/claude_opus_5_5/poster.png"
         },
         {
           "id": "gpt_6_1_sol",
@@ -1223,7 +1223,7 @@ window.C2V_CASES = {
           "vposter": "assets/case_studies/skeuomorphic/3D-01/claude_sonnet_5_5/poster.png"
         }
       ],
-      "note": "High / Mid / Low by NC",
+      "note": "Full generated videos",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-01/3D-01.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-01/3D-01.pdf",
@@ -1238,7 +1238,7 @@ window.C2V_CASES = {
       "key": "SK-3D-02",
       "task": "v2v",
       "sample": "d130c5ac8561038df0a085e8",
-      "title": "Controller assembly and wiring",
+      "title": "Controller Assembly",
       "label": "Clip Fidelity-example3",
       "desc": "Shell, PCB, wiring terminals and a mounting rail make assembly errors visible.",
       "metrics": [
@@ -1301,7 +1301,7 @@ window.C2V_CASES = {
         "media": "assets/case_studies/skeuomorphic/3D-02/input/keyclip.mp4",
         "vposter": "assets/case_studies/skeuomorphic/3D-02/input/poster.png"
       },
-      "note": "High / Mid / Low by SA/AF/MF",
+      "note": "Reference-matched excerpts",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-02/3D-02.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-02/3D-02.pdf",
@@ -1315,7 +1315,7 @@ window.C2V_CASES = {
       "key": "SK-3D-05",
       "task": "t2v",
       "sample": "0e657563c06e1b07c9718317",
-      "title": "Rainy store diorama (T2V)",
+      "title": "Rainy Convenience Store Diorama",
       "label": "Video Quality-example3",
       "desc": "Astra preserves a modeled storefront, vending machines, wet reflections and interior shelves, checkout and floor tiles. Haiku simplifies the shop; Gemini loses much of its structure.",
       "metrics": [
@@ -1357,7 +1357,7 @@ window.C2V_CASES = {
           "vposter": "assets/case_studies/skeuomorphic/3D-05/gemini_3_8_flash/poster.png"
         }
       ],
-      "note": "High / Mid / Low by AQ",
+      "note": "Full generated videos",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-05/3D-05.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-05/3D-05.pdf",
@@ -1371,7 +1371,7 @@ window.C2V_CASES = {
       "key": "SK-3D-06",
       "task": "i2v",
       "sample": "22e7dd187282f2e734066f35",
-      "title": "ROG laptop and hardware scan",
+      "title": "ROG Laptop Showcase",
       "label": "Image Fidelity-example3",
       "desc": "The physical chassis, keyboard, screen and lighting expose differences in product geometry and layout.",
       "metrics": [
@@ -1537,7 +1537,7 @@ window.C2V_CASES = {
         "type": "keyframe",
         "media": "assets/case_studies/skeuomorphic/3D-06/input/keyframe.png"
       },
-      "note": "All Models",
+      "note": "Selected output frames",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-06/3D-06.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-06/3D-06.pdf",
@@ -1551,7 +1551,7 @@ window.C2V_CASES = {
       "key": "SK-3D-07",
       "task": "t2v",
       "sample": "5790cb10d45b1fbcf248ca0c",
-      "title": "Suitcase mountain-town diorama",
+      "title": "Suitcase Mountain Town",
       "label": "Video Quality-example4",
       "desc": "A suitcase becomes a mountain city with a tram. Building detail, material shading and layered miniature space give a clear contrast.",
       "metrics": [
@@ -1593,7 +1593,7 @@ window.C2V_CASES = {
           "vposter": "assets/case_studies/skeuomorphic/3D-07/gemini_3_8_flash/poster.png"
         }
       ],
-      "note": "High / Mid / Low by AQ/TQ",
+      "note": "Full generated videos",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-07/3D-07.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-07/3D-07.pdf",
@@ -1607,7 +1607,7 @@ window.C2V_CASES = {
       "key": "SK-3D-08",
       "task": "t2v",
       "sample": "b791bb668217c187b6e13925",
-      "title": "GPU scale journey (T2V)",
+      "title": "GPU Scale Journey",
       "label": "Video Quality-example5",
       "desc": "Rack, GPU, transistor and atom stages contrast modeled depth with simplified diagrams.",
       "metrics": [
@@ -1649,7 +1649,7 @@ window.C2V_CASES = {
           "vposter": "assets/case_studies/skeuomorphic/3D-08/claude_sonnet_5_5/poster.png"
         }
       ],
-      "note": "High / Mid / Low by TQ",
+      "note": "Full generated videos",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-08/3D-08.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-08/3D-08.pdf",
@@ -1663,7 +1663,7 @@ window.C2V_CASES = {
       "key": "SK-3D-09",
       "task": "i2v",
       "sample": "db6f1d4deb3e2d17a8c967f1",
-      "title": "DualSense controller studio",
+      "title": "DualSense Controller",
       "label": "Image Fidelity-example4",
       "desc": "Curved grips, touchpad, sticks and blue edge lighting make the product silhouette easy to compare.",
       "metrics": [
@@ -1833,7 +1833,7 @@ window.C2V_CASES = {
         "type": "keyframe",
         "media": "assets/case_studies/skeuomorphic/3D-09/input/keyframe.png"
       },
-      "note": "All Models",
+      "note": "Selected output frames",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-09/3D-09.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-09/3D-09.pdf",
@@ -1847,7 +1847,7 @@ window.C2V_CASES = {
       "key": "SK-3D-10",
       "task": "v2v",
       "sample": "RTA-0380",
-      "title": "Procedural city and night lights",
+      "title": "Procedural City",
       "label": "Video Quality-example6",
       "desc": "Astra develops road and plot outlines into buildings, adds facade grids and rooftop equipment, then lights the city at night before a point-cloud teardown. Sol retains the city-building stages with less consistent surface detail. Kimi uses simpler blocks with weaker facades and spatial layering.",
       "metrics": [
@@ -1885,7 +1885,7 @@ window.C2V_CASES = {
           "vposter": "assets/case_studies/skeuomorphic/3D-10/kimi_k3/poster.png"
         }
       ],
-      "note": "High / Mid / Low by AQ",
+      "note": "Full generated videos",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-10/3D-10.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-10/3D-10.pdf",
@@ -1899,7 +1899,7 @@ window.C2V_CASES = {
       "key": "SK-3D-11",
       "task": "i2v",
       "sample": "youtube_R24_a9c5e2957a7a",
-      "title": "Llama and penguins in the snow",
+      "title": "Llama and Penguins",
       "label": "Image Fidelity-example5",
       "desc": "A character-scene supplement: compare the llama proportions, penguin group, snow and lighting.",
       "metrics": [
@@ -2073,7 +2073,7 @@ window.C2V_CASES = {
         "type": "keyframe",
         "media": "assets/case_studies/skeuomorphic/3D-11/input/keyframe.png"
       },
-      "note": "All Models",
+      "note": "Selected output frames",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-11/3D-11.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-11/3D-11.pdf",
@@ -2087,7 +2087,7 @@ window.C2V_CASES = {
       "key": "SK-3D-13",
       "task": "v2v",
       "sample": "2d66d4538bec657962bd9006",
-      "title": "Audi V8 to wagon acceleration",
+      "title": "Audi RS 6 Animation",
       "label": "Clip Fidelity-example4",
       "desc": "V8 and twin-turbo diagrams become a wagon outline, then a detailed car with acceleration telemetry. Astra retains the stage progression and vehicle; Kimi simplifies proportions and telemetry; MiniMax stretches the car into an angular shape.",
       "metrics": [
@@ -2150,7 +2150,7 @@ window.C2V_CASES = {
         "media": "assets/case_studies/skeuomorphic/3D-13/input/keyclip.mp4",
         "vposter": "assets/case_studies/skeuomorphic/3D-13/input/poster.png"
       },
-      "note": "High / Mid / Low by SA/AF/MF",
+      "note": "Reference-matched excerpts",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-13/3D-13.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-13/3D-13.pdf",
@@ -2164,7 +2164,7 @@ window.C2V_CASES = {
       "key": "SK-3D-14",
       "task": "v2v",
       "sample": "dfe8b01bdc4bc7803065b9e2",
-      "title": "VELVET ALIBI: anime and kinetic typography",
+      "title": "Velvet Alibi",
       "label": "Clip Fidelity-example5",
       "desc": "A pink-haired operative crosses a neon city, followed by cut-out lyric tiles, radial stripes and a face close-up. Astra retains these stages and a detailed character; Kimi simplifies the character; MiniMax reduces it to an icon-like figure in a partial city passage.",
       "metrics": [
@@ -2223,7 +2223,7 @@ window.C2V_CASES = {
         "media": "assets/case_studies/skeuomorphic/3D-14/input/keyclip.mp4",
         "vposter": "assets/case_studies/skeuomorphic/3D-14/input/poster.png"
       },
-      "note": "High / Mid / Low by SA/AF",
+      "note": "Reference-matched excerpts",
       "figures": {
         "png": "assets/case_studies/skeuomorphic/3D-14/3D-14.png",
         "pdf": "assets/case_studies/skeuomorphic/3D-14/3D-14.pdf",
@@ -2237,7 +2237,7 @@ window.C2V_CASES = {
       "key": "HQ-VD-2",
       "task": "i2v",
       "sample": "f7a4dac05d2736becb25f061",
-      "title": "QuickEmailVerify: UI hierarchy and information density",
+      "title": "QuickEmailVerify Product Demo",
       "label": "Visual Design-example2",
       "desc": "GLM separates the outcome cards, bulk-verification panel, API code and integration diagram into readable layouts. Kimi keeps fewer states and a simpler information structure. Qwen repeatedly overlays headings and body text in the white panels, visibly obscuring the content.",
       "metrics": [
@@ -2285,7 +2285,7 @@ window.C2V_CASES = {
       "key": "HQ-VE-1",
       "task": "t2v",
       "sample": "RTA-0050",
-      "title": "Aetheria: television to a living mind-body system",
+      "title": "Aetheria",
       "label": "Viewer Engagement-example2",
       "desc": "Sol develops a sequence of reveals from a television to a computing architecture, a human figure and a sunset scene. Sonnet retains these stages with simpler rendering. MiniMax starts with a long sparse opening and later uses thin lines and simplified figures, weakening the build-up and resolution.",
       "metrics": [
