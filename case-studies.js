@@ -24,7 +24,7 @@
     const m = (window.COMPASS_DATA?.metrics || []).find(x => x.id === id);
     return m ? m.name : id;
   };
-  const fmtScore = (id, v) => Number(v).toFixed(3);
+  const fmtScore = (id, v) => ['NC','VD','MT','VE'].includes(id) ? `${Number(v)} / 5` : Number(v).toFixed(3);
 
   function chipRow() {
     const box = $('cs-chips');
@@ -53,38 +53,10 @@
   }
 
   function scoreChips(model, metrics) {
-    return metrics.filter(k => !['IF', 'NC', 'VD', 'MT', 'VE'].includes(k)).map(k => `<span class="sc"><b>${esc(k)}</b> ${model.scores[k] != null ? fmtScore(k, model.scores[k]) : '—'}</span>`).join('');
+    return metrics.filter(k => k !== 'IF').map(k => `<span class="sc"><b>${esc(k)}</b> ${model.scores?.[k] != null ? fmtScore(k, model.scores[k]) : '—'}</span>`).join('');
   }
-  function annotatedPrompt(inp, models) {
-      let offset = 0;
-      const body = inp.spans.map(s => {
-        offset += s.t.length;
-        if (!s.m.length) return esc(s.t);
-        const mks = s.m.map(id => inp.marks.find(x => x.id === id));
-        const modelLabel = mk => {
-          const model = models.find(m => m.rank === mk.rank);
-          return model ? `${RANK_LABEL[mk.rank]} (${model.name})` : RANK_LABEL[mk.rank];
-        };
-        const notes = mks.map(mk => `${modelLabel(mk)} — ${mk.note || ''}` +
-          (mk.questions?.length ? ` Questions: ${mk.questions.join(', ')}.` : '') +
-          (mk.evidence_times_s?.length ? ` Evidence at ${mk.evidence_times_s.map(t => Number(t).toFixed(2)).join(', ')}s.` : '')).join('\n');
-        const miss = mks.some(m => m.rank === 'low'),
-              part = mks.some(m => m.rank === 'mid');
-        const cls = miss && part ? 'mk-both' : miss ? 'mk-missing' : 'mk-partial';
-        // Colors identify the selected output tier: red Low, yellow Mid.
-        const tags = mks.filter(mk => mk.end === offset).map(mk => `<i class="mk-note ${mk.rank}">[${esc(modelLabel(mk))}: ${esc(mk.short || '')}]</i>`).join(' ');
-        return `<mark class="${cls}" title="${esc(notes)}">${esc(s.t)}</mark>${tags ? ' ' + tags : ''}`;
-      }).join('');
-      return `<details class="cs-prompt" open><summary>Instruction prompt — annotated</summary>
-        <p class="cs-prompt-body">${body}</p>
-        <div class="cs-legend-block">
-          <span class="leg low"><i class="sw"></i>red — ${esc(inp.legend?.red || "missing from the Low model's video")}</span>
-          <span class="leg mid"><i class="sw"></i>yellow — ${esc(inp.legend?.yellow || "incomplete in the Mid model's video")}</span>
-        </div></details>`;
-
-  }
-
   function inputBlock(c) {
+    if (!['if', 'cf', 'instr'].includes(c.family_key)) return '';
     const inp = c.input;
     if (!inp) return '';  // groups without input material render nothing
     let media = '';
@@ -104,12 +76,8 @@
         }).join('');
         return `<tr><td class="q-n">${q.n}</td><td class="q-t">${esc(q.text)}</td>${cells}</tr>`;
       }).join('');
-      prompt = (inp.spans ? annotatedPrompt(inp, c.models) : '') + `<details class="cs-prompt" open><summary>Instruction-following checklist — ${inp.questions.length} yes/no questions</summary>
+      prompt = `<details class="cs-prompt" open><summary>Instruction-following checklist — ${inp.questions.length} yes/no questions</summary>
         <div class="cs-table-scroll" tabindex="0" role="region" aria-label="Scroll instruction-following checklist horizontally"><table class="cs-checklist"><thead><tr><th class="q-n">#</th><th>Question</th>${heads}</tr></thead><tbody>${rows}</tbody></table></div></details>`;
-    } else if (inp.type === 'annotated-prompt') {
-      prompt = annotatedPrompt(inp, c.models);
-    } else if (inp.prompt) {
-      prompt = `<details class="cs-prompt"><summary>Instruction prompt</summary><p class="cs-prompt-body">${esc(inp.prompt)}</p></details>`;
     }
     if (!media && !prompt) return '';
     // media-only blocks (keyframe / clip) centre the reference in the panel
@@ -118,8 +86,9 @@
   }
 
   function videoCell(c, m, i) {
+    if (m.unavailable) return `<figure class="cs-cell"><div class="cs-video cs-unavailable">No available MP4</div><figcaption><b>${esc(m.name)}</b><p>Unavailable output; not a zero score.</p></figcaption></figure>`;
     const rank = m.rank ? `<span class="cs-rank ${m.rank}">${RANK_LABEL[m.rank]}</span>` : '';
-    const clip = m.clip ? `<span class="sc sc-clip" title="Shown segment">${m.clip[0]}–${m.clip[1]}s</span>` : '';
+    const clip = m.clip ? `<span class="sc sc-clip" title="Shown segment">${Number(m.clip[0]).toFixed(2)}–${Number(m.clip[1]).toFixed(2)}s</span>` : '';
     let box;
     if (m.poster) {  // still frame: click to enlarge
       box = `<button class="cs-video" type="button" data-zoom="${i}" aria-label="Enlarge ${esc(m.name)} output">
@@ -134,6 +103,7 @@
       <figcaption>
         <span class="cs-model">${rank}<b>${esc(m.name)}</b></span>
         <span class="cs-scores">${clip}${scoreChips(m, c.metrics)}</span>
+        ${m.canonical_time != null ? `<small>Scored frame: ${Number(m.canonical_time).toFixed(2)}s</small>` : ''}
       </figcaption>
     </figure>`;
   }
@@ -144,7 +114,7 @@
       `<span class="cs-tag">Metrics: ${c.metrics.map(k => `${k} · ${esc(metricName(k))}`).join(', ')}</span>`];
     if (c.note) tags.push(`<span class="cs-tag cs-tag-note">${esc(c.note)}</span>`);
     $('cs-panel').innerHTML = `
-      <header class="cs-head"><h3>${esc(c.label || c.key + ' · ' + c.title)}</h3>
+      <header class="cs-head"><h3>${esc(c.label)}</h3><p class="cs-desc">${esc(c.title)}</p>
         <div class="cs-meta">${tags.join('')}</div>
         ${c.desc ? `<p class="cs-desc">${esc(c.desc)}</p>` : ''}</header>
       ${inputBlock(c)}
@@ -180,12 +150,12 @@
       vid.hidden = false; vid.src = m.video;
     }
     $('cs-lb-cap').textContent = `${c.label || c.key + ' · ' + c.title} — ${m.name}` +
-      (m.rank ? ` (${RANK_LABEL[m.rank]})` : '') + (m.clip ? ` · ${m.clip[0]}–${m.clip[1]}s` : '') +
+      (m.rank ? ` (${RANK_LABEL[m.rank]})` : '') + (m.clip ? ` · ${Number(m.clip[0]).toFixed(2)}–${Number(m.clip[1]).toFixed(2)}s` : '') +
       ` (${zoom + 1}/${c.models.length})`;
   }
   function stepViewer(d) {
     const c = C.cases[flat[caseIdx]];
-    zoom = (zoom + d + c.models.length) % c.models.length;
+    do { zoom = (zoom + d + c.models.length) % c.models.length; } while (c.models[zoom].unavailable);
     showViewer();
   }
   function stepCase(d) {

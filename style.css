@@ -366,3 +366,9 @@ mark.mk-both{background:rgba(190,60,60,.15);color:#8f3030;border-bottom:3px soli
 }
 
 .updates-note{text-align:center;margin:24px 0 12px;font-size:14px;line-height:1.6;color:#6b7280;}
+
+.cs-unavailable{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;background:#eef0f4;color:#555}.cs-review{font-size:14px;line-height:1.7;margin:12px 0}
+
+
+
+
