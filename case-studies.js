@@ -55,8 +55,37 @@
   function scoreChips(model, metrics) {
     return metrics.filter(k => k !== 'IF').map(k => `<span class="sc"><b>${esc(k)}</b> ${model.scores?.[k] != null ? fmtScore(k, model.scores[k]) : '—'}</span>`).join('');
   }
+  function annotatedPrompt(inp, models) {
+      let offset = 0;
+      const body = inp.spans.map(s => {
+        offset += s.t.length;
+        if (!s.m.length) return esc(s.t);
+        const mks = s.m.map(id => inp.marks.find(x => x.id === id));
+        const modelLabel = mk => {
+          const model = models.find(m => m.rank === mk.rank);
+          return model ? `${RANK_LABEL[mk.rank]} (${model.name})` : RANK_LABEL[mk.rank];
+        };
+        const notes = mks.map(mk => `${modelLabel(mk)} — ${mk.note || ''}` +
+          (mk.questions?.length ? ` Questions: ${mk.questions.join(', ')}.` : '') +
+          (mk.evidence_times_s?.length ? ` Evidence at ${mk.evidence_times_s.map(t => Number(t).toFixed(2)).join(', ')}s.` : '')).join('\n');
+        const miss = mks.some(m => m.rank === 'low'),
+              part = mks.some(m => m.rank === 'mid');
+        const cls = miss && part ? 'mk-both' : miss ? 'mk-missing' : 'mk-partial';
+        // Colors identify the selected output tier: red Low, yellow Mid.
+        const tags = mks.filter(mk => mk.end === offset).map(mk => `<i class="mk-note ${mk.rank}">[${esc(modelLabel(mk))}: ${esc(mk.short || '')}]</i>`).join(' ');
+        return `<mark class="${cls}" title="${esc(notes)}">${esc(s.t)}</mark>${tags ? ' ' + tags : ''}`;
+      }).join('');
+      return `<details class="cs-prompt" open><summary>Instruction prompt — annotated</summary>
+        <p class="cs-prompt-body">${body}</p>
+        <div class="cs-legend-block">
+          <span class="leg low"><i class="sw"></i>red — ${esc(inp.legend?.red || "missing from the Low model's video")}</span>
+          <span class="leg mid"><i class="sw"></i>yellow — ${esc(inp.legend?.yellow || "incomplete in the Mid model's video")}</span>
+        </div></details>`;
+
+  }
+
   function inputBlock(c) {
-    if (!['if', 'cf', 'instr'].includes(c.family_key)) return '';
+    if (!['if', 'cf', 'ta', 'instr'].includes(c.family_key)) return '';
     const inp = c.input;
     if (!inp) return '';  // groups without input material render nothing
     let media = '';
@@ -76,9 +105,10 @@
         }).join('');
         return `<tr><td class="q-n">${q.n}</td><td class="q-t">${esc(q.text)}</td>${cells}</tr>`;
       }).join('');
-      prompt = `<details class="cs-prompt" open><summary>Instruction-following checklist — ${inp.questions.length} yes/no questions</summary>
+      prompt = (inp.spans ? annotatedPrompt(inp, c.models) : '') + `<details class="cs-prompt" open><summary>Instruction-following checklist — ${inp.questions.length} yes/no questions</summary>
         <div class="cs-table-scroll" tabindex="0" role="region" aria-label="Scroll instruction-following checklist horizontally"><table class="cs-checklist"><thead><tr><th class="q-n">#</th><th>Question</th>${heads}</tr></thead><tbody>${rows}</tbody></table></div></details>`;
     }
+    if (inp.type === 'annotated-prompt') prompt = annotatedPrompt(inp, c.models);
     if (!media && !prompt) return '';
     // media-only blocks (keyframe / clip) centre the reference in the panel
     const cls = !media ? ' cs-input-only' + (inp.type === 'checklist' ? ' cs-input-stack' : '') : !prompt ? ' cs-media-only' : '';

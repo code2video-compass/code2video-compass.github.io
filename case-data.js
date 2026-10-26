@@ -711,7 +711,74 @@ window.C2V_CASES = {
       "note": "Full generated videos",
       "label": "Text Alignment-example1",
       "family_key": "ta",
-      "family_label": "Text Alignment"
+      "family_label": "Text Alignment",
+      "input": {
+        "type": "annotated-prompt",
+        "prompt": "An educational hand-drawn motion graphics timeline traces the evolution of large language models on a light beige textured ground. Prior to the reference clip, the animation covers the introduction of token prediction, the 2017 Transformer attention mechanism, the hatching of the speech-bubble mascot in GPT-1, staged safety releases in GPT-2, massive parameter scaling in GPT-3, RLHF alignment in InstructGPT, ChatGPT's multi-task chat explosion, GPT-4's browser demo, and GPT-4o's real-time sensory circles.\n\nThe animation then transitions into the dynamic sequence shown in the reference clip: at milestone \"o1 2024.9.12\", a thought cloud appears above the green mascot's head under the heading \"先想，再回答\". The cloud rapidly expands, filling the frame with a dark navy grid background. At the top right, a stopwatch indicator counts upward (\"已思考 0 秒\" up to \"已思考 8 秒\"). Sketched white chalk diagrams and handwritten equations solve the classic word problem step by step: \"一支球拍加一个球，一共 1.10 元；球拍比球贵 1 元。球多少钱？\", rejecting the intuitive \"直觉：0.10 元？\" and working through \"x + (x+1) = 1.10 -> x = 0.05\" until \"球 = 0.05\" is circled in yellow.\n\nFollowing this clip, the thought window snaps back into the cloud as the mascot pops back onto the main timeline cheerfully shouting \"球是 5 分钱！\". The journey proceeds into GPT-5's routing system merging fast and slow thinkers, a rapid sequence of version updates (GPT-5.1 through GPT-5.6) flashing across the timeline, and concludes under a starry twilight gradient sky for GPT-6 Astra, typing the final line \"下一个字，还在写。\".",
+        "spans": [
+          {
+            "t": "An educational hand-drawn motion graphics timeline traces the evolution of large language models on a light beige textured ground. ",
+            "m": []
+          },
+          {
+            "t": "Prior to the reference clip, the animation covers the introduction of token prediction, the 2017 Transformer attention mechanism, the hatching of the speech-bubble mascot in GPT-1, staged safety releases in GPT-2, massive parameter scaling in GPT-3, RLHF alignment in InstructGPT, ChatGPT's multi-task chat explosion, GPT-4's browser demo, and GPT-4o's real-time sensory circles.",
+            "m": [
+              "T1",
+              "M1"
+            ]
+          },
+          {
+            "t": "\n\nThe animation then transitions into the dynamic sequence shown in the reference clip: at milestone \"o1 2024.9.12\", a thought cloud appears above the green mascot's head under the heading \"先想，再回答\". The cloud rapidly expands, filling the frame with a dark navy grid background. At the top right, a stopwatch indicator counts upward (\"已思考 0 秒\" up to \"已思考 8 秒\"). Sketched white chalk diagrams and handwritten equations solve the classic word problem step by step: \"一支球拍加一个球，一共 1.10 元；球拍比球贵 1 元。球多少钱？\", rejecting the intuitive \"直觉：0.10 元？\" and working through \"x + (x+1) = 1.10 -> x = 0.05\" until \"球 = 0.05\" is circled in yellow.\n\n",
+            "m": []
+          },
+          {
+            "t": "Following this clip, the thought window snaps back into the cloud as the mascot pops back onto the main timeline cheerfully shouting \"球是 5 分钱！\". The journey proceeds into GPT-5's routing system merging fast and slow thinkers, a rapid sequence of version updates (GPT-5.1 through GPT-5.6) flashing across the timeline, and concludes under a starry twilight gradient sky for GPT-6 Astra, typing the final line \"下一个字，还在写。",
+            "m": [
+              "T2"
+            ]
+          },
+          {
+            "t": "\".",
+            "m": []
+          }
+        ],
+        "marks": [
+          {
+            "start": 131,
+            "end": 510,
+            "severity": "missing",
+            "id": "T1",
+            "rank": "low",
+            "note": "Low output concentrates on the reasoning segment; the early-milestone narrative before it (token prediction, Transformer, GPT-1 to GPT-4o) is not covered. The mid tier also covers this part less completely.",
+            "short": "early milestones before the clip (token prediction → GPT-4o) are missing",
+            "questions": []
+          },
+          {
+            "start": 131,
+            "end": 510,
+            "severity": "partial",
+            "id": "M1",
+            "rank": "mid",
+            "note": "The mid output begins at the reasoning stage and retains later milestones; the earlier token-prediction-to-GPT-4o sequence is not shown.",
+            "short": "the earlier timeline is omitted; later milestones are retained",
+            "questions": []
+          },
+          {
+            "start": 1138,
+            "end": 1556,
+            "severity": "missing",
+            "id": "T2",
+            "rank": "low",
+            "note": "The closing GPT-5 routing and GPT-6 Astra stages after the reference segment are not covered by the low output.",
+            "short": "the GPT-5 routing and GPT-6 finale after the clip are missing",
+            "questions": []
+          }
+        ],
+        "legend": {
+          "red": "missing from the Low model's video",
+          "yellow": "incomplete in the Mid model's video"
+        }
+      }
     },
     "TA-2": {
       "key": "TA-2",
@@ -761,7 +828,135 @@ window.C2V_CASES = {
       "note": "Full generated videos",
       "label": "Text Alignment-example2",
       "family_key": "ta",
-      "family_label": "Text Alignment"
+      "family_label": "Text Alignment",
+      "input": {
+        "type": "annotated-prompt",
+        "prompt": "A motion design showreel tracing the technical evolution from 2D animation foundations to 3D procedural and kinetic motion. The animation commences on a minimal white drafting canvas with a 2D spacing chart and dashed arc tracking a blue sphere's acceleration and deceleration, leading into an electric blue title sequence for 'CLAUDE' with textured background typography. A bouncing ball breakdown follows with explicit squash and stretch deformation accompanied by colorful hand-drawn callout annotations, leading to the phrase 'I MAKE THINGS MOVE' and a rhythmic barrage of typographic animations for 'BOUNCE', 'STRETCH', 'SPIN', and 'SNAP'. A curve editor UI then details the difference between linear motion and ease-in-out interpolation using interactive timeline scrubber controls.\n\nThe animation then reproduces the exact behavior of the reference clip: an overhead dotted ring rapidly fills clockwise with blue dots as a numerical percentage counts from 12% to 100% next to bold black '2D' text annotated in red cursive with '(for now.)'. Upon reaching 100%, the viewpoint tilts downwards into dramatic 3D perspective, extruding the dotted ring into a procedural circular wave of tall blue cylindrical pillars that oscillate up and down like an audio visualizer. In the center, the blue sphere bounces with onion-skin trajectory rings, while the bold typography flips into extruded '3D' block letters and the camera orbits smoothly around the circular array following a curved floor guide labeled 'orbit'.\n\nContinuing past the reference clip, the scene shifts to an extruded 3D phrase 'I MAKE THINGS MOVE' toppling onto a perspective grid as a camera dolly zoom warps spatial perspective with an FoV counter rising from 28° to 80°. The scene opens into a vast procedural terrain of black dots undulating in ripples around the bouncing sphere, transitioning through an expansive radial particle vortex. Quick-cut 3D kinetic typography showcases 'BOUNCE', 'STRETCH', 'SPIN', and 'SNAP' interacting dynamically with dimensional grids. Finally, heavy 3D beveled letters spelling 'CLAUDE' land upright on a clean studio floor, alongside the bouncing blue sphere, an animated cursive subtitle 'motion designer', and a playful red call-to-action arrow reading '(hire me.)'.",
+        "spans": [
+          {
+            "t": "A motion design showreel tracing the technical evolution from 2D animation foundations to 3D procedural and kinetic motion. ",
+            "m": []
+          },
+          {
+            "t": "The animation commences on a minimal white drafting canvas with a 2D spacing chart and dashed arc tracking a blue sphere's acceleration and deceleration, leading into an electric blue title sequence for 'CLAUDE' with textured background typography. A bouncing ball breakdown follows with explicit squash and stretch deformation accompanied by colorful hand-drawn callout annotations, leading to the phrase 'I MAKE THINGS MOVE' and a rhythmic barrage of typographic animations for 'BOUNCE', 'STRETCH', 'SPIN', and 'SNAP'.",
+            "m": [
+              "T1"
+            ]
+          },
+          {
+            "t": " ",
+            "m": []
+          },
+          {
+            "t": "A curve editor UI then details the difference between linear motion and ease-in-out interpolation using interactive timeline scrubber controls.",
+            "m": [
+              "T2"
+            ]
+          },
+          {
+            "t": "\n\nThe animation then reproduces the exact behavior of the reference clip: an overhead dotted ring rapidly fills clockwise with blue dots as a numerical percentage counts from 12% to 100% next to bold black '2D' text annotated in red cursive with '(for now.)'. Upon reaching 100%, the viewpoint tilts downwards into dramatic 3D perspective, extruding the dotted ring into ",
+            "m": []
+          },
+          {
+            "t": "a procedural circular wave of tall blue cylindrical pillars that oscillate up and down like an audio visualizer",
+            "m": [
+              "T4"
+            ]
+          },
+          {
+            "t": ". In the center, the blue sphere bounces with onion-skin trajectory rings, while the bold typography flips into extruded '3D' block letters and the camera orbits smoothly around the circular array following a curved floor guide labeled 'orbit'.\n\n",
+            "m": []
+          },
+          {
+            "t": "Continuing past the reference clip, the scene shifts to an extruded 3D phrase 'I MAKE THINGS MOVE' toppling onto a perspective grid as a camera dolly zoom warps spatial perspective with an FoV counter rising from 28° to 80°. The scene opens into a vast procedural terrain of black dots undulating in ripples around the bouncing sphere, transitioning through an expansive radial particle vortex. Quick-cut 3D kinetic typography showcases 'BOUNCE', 'STRETCH', 'SPIN', and 'SNAP' interacting dynamically with dimensional grids. Finally, ",
+            "m": [
+              "T3"
+            ]
+          },
+          {
+            "t": "heavy 3D beveled letters spelling 'CLAUDE'",
+            "m": [
+              "T3",
+              "T5"
+            ]
+          },
+          {
+            "t": " land upright on a clean studio floor, alongside the bouncing blue sphere, an animated cursive subtitle 'motion designer', and a playful red call-to-action arrow reading '(hire me.)",
+            "m": [
+              "T3"
+            ]
+          },
+          {
+            "t": "'.",
+            "m": []
+          }
+        ],
+        "marks": [
+          {
+            "start": 124,
+            "end": 644,
+            "severity": "missing",
+            "id": "T1",
+            "rank": "low",
+            "note": "Low output skips the 2D foundations: drafting canvas, spacing chart, CLAUDE title and the bouncing-ball breakdown.",
+            "short": "2D foundations — spacing chart, CLAUDE title, bouncing ball — are missing",
+            "questions": []
+          },
+          {
+            "start": 645,
+            "end": 788,
+            "severity": "missing",
+            "id": "T2",
+            "rank": "low",
+            "note": "The curve-editor segment on interpolation is not covered.",
+            "short": "the curve-editor interpolation segment is missing",
+            "questions": []
+          },
+          {
+            "start": 1516,
+            "end": 2273,
+            "severity": "missing",
+            "id": "T3",
+            "rank": "low",
+            "note": "The closing 3D kinetic typography, terrain, vortex and branding segments after the reference clip are not covered.",
+            "short": "the closing 3D act — typography, terrain, vortex, branding — is missing",
+            "questions": []
+          },
+          {
+            "start": 1159,
+            "end": 1270,
+            "severity": "partial",
+            "id": "T4",
+            "rank": "mid",
+            "note": "Mid shows oscillating blue strokes arranged in a ring; the cylindrical volume of the requested pillars is not clearly visible.",
+            "short": "the oscillating ring is present, but cylindrical pillar volume is unclear",
+            "questions": [],
+            "evidence_times_s": [
+              13,
+              15,
+              16
+            ]
+          },
+          {
+            "start": 2050,
+            "end": 2092,
+            "severity": "partial",
+            "id": "T5",
+            "rank": "mid",
+            "note": "Mid shows flat-faced closing letters with blue offset depth; the requested beveled edges are not clearly visible.",
+            "short": "the closing letters show offset depth, but no clear beveled edges",
+            "questions": [],
+            "evidence_times_s": [
+              29,
+              30
+            ]
+          }
+        ],
+        "legend": {
+          "red": "missing from the Low model's video",
+          "yellow": "incomplete in the Mid model's video"
+        }
+      }
     },
     "MT-1": {
       "key": "MT-1",
@@ -1175,7 +1370,301 @@ window.C2V_CASES = {
               "claude-sonnet-5-5": "No"
             }
           }
-        ]
+        ],
+        "prompt": "Create a kinetic typography and brand promo video featuring diverse rapid product demonstrations, matching the visual styles, kinetic pacing, and UI behaviors shown in the reference clip. Before the clip begins, the promo starts on an off-white background with colorful accents spelling out 'What do you want to make?', where 'make?' is highlighted in an orange pill container. Expanding concentric circles transition the scene into a bright blue frame labeled 'an app', featuring a mobile phone mockup with popping notification badges, followed by a yellow backdrop labeled 'a short story' showing a classic manuscript page titled 'Chapter One'. The animation then seamlessly incorporates the dynamic sequence seen in the reference clip: sliding into a dark green grid showing 'a business plan' where bar chart columns rise under a bouncing coin token; transitioning to an orange retro arcade game labeled 'a game' where an invader explodes into yellow pixel particles upon being hit; wiping to a soft peach screen labeled 'a website' with a clickable browser mockup; and transitioning into a dark code editor labeled 'that 2 a.m. bug fix' where a loop bug in JavaScript is corrected and verified with green checklist items. Following the reference clip, typographic labels rush past the camera through a 3D dark tunnel before settling on an expanding cream card reading 'Just ask.'. This card scales back to reveal an aggregated constellation of the previous scenario cards arranged around it. The background cards dim as text appears stating 'This ad was made by Claude, from a single prompt.' in mixed sans-serif and gold serif styling. Finally, a large rounded cream card slides up to center stage, displaying the bold black 'Claude' branding, 'Opus 5.5' in red monospace font, and a black call-to-action button 'Try it at claude.ai →' that receives an interactive cursor click.",
+        "spans": [
+          {
+            "t": "Create a kinetic typography and brand promo video featuring diverse rapid product demonstrations, matching the visual styles, kinetic pacing, and UI behaviors shown in the reference clip. ",
+            "m": []
+          },
+          {
+            "t": "Before the clip begins, the promo starts on an off-white background with colorful accents spelling out 'What do you want to make?', where 'make?' is highlighted in an orange pill container.",
+            "m": [
+              "L1"
+            ]
+          },
+          {
+            "t": " ",
+            "m": []
+          },
+          {
+            "t": "Expanding concentric circles transition the scene into a bright blue frame labeled 'an app', featuring a mobile phone mockup with popping notification badges, followed by a yellow backdrop labeled 'a short story' showing a classic manuscript page titled 'Chapter One'.",
+            "m": [
+              "L2"
+            ]
+          },
+          {
+            "t": " The animation then seamlessly incorporates the dynamic sequence seen in the reference clip: sliding into a dark green grid showing 'a business plan' where bar chart columns rise under a bouncing coin token; transitioning to an orange retro arcade game labeled 'a game' where an invader explodes into yellow pixel particles upon being hit; wiping to a soft peach screen labeled 'a website' with a clickable browser mockup; ",
+            "m": []
+          },
+          {
+            "t": "and transitioning into a dark code editor labeled 'that 2 a.m. bug fix' where a loop bug in JavaScript is corrected and verified with green checklist items.",
+            "m": [
+              "M1"
+            ]
+          },
+          {
+            "t": " ",
+            "m": []
+          },
+          {
+            "t": "Following the reference clip,",
+            "m": [
+              "L3",
+              "M2"
+            ]
+          },
+          {
+            "t": " typographic labels rush past the camera through a 3D dark tunnel before settling on an expanding cream card reading 'Just ask.'.",
+            "m": [
+              "L3"
+            ]
+          },
+          {
+            "t": " ",
+            "m": []
+          },
+          {
+            "t": "This card scales back to reveal an aggregated constellation of the previous scenario cards arranged around it.",
+            "m": [
+              "L4"
+            ]
+          },
+          {
+            "t": " ",
+            "m": []
+          },
+          {
+            "t": "The background cards dim",
+            "m": [
+              "L5",
+              "M3"
+            ]
+          },
+          {
+            "t": " as text appears stating 'This ad was made by Claude, from a single prompt.' in mixed sans-serif and gold serif styling.",
+            "m": [
+              "L5"
+            ]
+          },
+          {
+            "t": " ",
+            "m": []
+          },
+          {
+            "t": "Finally, a large rounded cream card slides up to center stage, displaying the bold black 'Claude' branding, 'Opus 5.5' in red monospace font, and a black call-to-action button 'Try it at claude.ai →' that receives an ",
+            "m": [
+              "L6"
+            ]
+          },
+          {
+            "t": "interactive cursor click",
+            "m": [
+              "L6",
+              "M4"
+            ]
+          },
+          {
+            "t": ".",
+            "m": [
+              "L6"
+            ]
+          }
+        ],
+        "marks": [
+          {
+            "id": "L1",
+            "severity": "missing",
+            "start": 188,
+            "end": 377,
+            "note": "Opening question and orange make? badge are absent.",
+            "rank": "low",
+            "short": "Opening question and orange make? badge are absent.",
+            "questions": [
+              4
+            ],
+            "evidence_times_s": [
+              0,
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "id": "L2",
+            "severity": "missing",
+            "start": 378,
+            "end": 646,
+            "note": "The smartphone and manuscript lead-in is not shown.",
+            "rank": "low",
+            "short": "The smartphone and manuscript lead-in is not shown.",
+            "questions": [
+              12
+            ],
+            "evidence_times_s": [
+              0,
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "id": "L3",
+            "severity": "missing",
+            "start": 1226,
+            "end": 1384,
+            "note": "The output ends in the code scene; tunnel and Just ask stage are absent.",
+            "rank": "low",
+            "short": "The output ends in the code scene; tunnel and Just ask stage are absent.",
+            "questions": [
+              3,
+              9,
+              13
+            ],
+            "evidence_times_s": [
+              8.3,
+              9.3,
+              10.3,
+              11.7
+            ]
+          },
+          {
+            "id": "L4",
+            "severity": "missing",
+            "start": 1385,
+            "end": 1495,
+            "note": "No central-card shrink/reveal or surrounding gallery.",
+            "rank": "low",
+            "short": "No central-card shrink/reveal or surrounding gallery.",
+            "questions": [
+              3,
+              5,
+              10
+            ],
+            "evidence_times_s": [
+              9,
+              10,
+              11,
+              11.7
+            ]
+          },
+          {
+            "id": "L5",
+            "severity": "missing",
+            "start": 1496,
+            "end": 1640,
+            "note": "Gallery dimming and the specified explanatory sentence are absent.",
+            "rank": "low",
+            "short": "Gallery dimming and the specified explanatory sentence are absent.",
+            "questions": [
+              8,
+              10
+            ],
+            "evidence_times_s": [
+              9,
+              10,
+              11,
+              11.7
+            ]
+          },
+          {
+            "id": "L6",
+            "severity": "missing",
+            "start": 1641,
+            "end": 1883,
+            "note": "Closing card, brand subtitle, CTA and its click are absent.",
+            "rank": "low",
+            "short": "Closing card, brand subtitle, CTA and its click are absent.",
+            "questions": [
+              1,
+              2,
+              6,
+              7
+            ],
+            "evidence_times_s": [
+              9,
+              10,
+              11,
+              11.7
+            ]
+          },
+          {
+            "id": "M1",
+            "severity": "missing",
+            "start": 1069,
+            "end": 1225,
+            "note": "The required code-fix scene is not visible; black frames follow the website.",
+            "rank": "mid",
+            "short": "The required code-fix scene is not visible; black frames follow the website.",
+            "questions": [
+              13
+            ],
+            "evidence_times_s": [
+              26.8,
+              28.8,
+              31.8,
+              32.9
+            ]
+          },
+          {
+            "id": "M2",
+            "severity": "partial",
+            "start": 1226,
+            "end": 1255,
+            "note": "Tunnel exists, but the required code-scene-to-tunnel continuity is not established.",
+            "rank": "mid",
+            "short": "Tunnel exists, but the required code-scene-to-tunnel continuity is not established.",
+            "questions": [
+              13
+            ],
+            "evidence_times_s": [
+              26.8,
+              28.8,
+              31.8,
+              32.9
+            ]
+          },
+          {
+            "id": "M3",
+            "severity": "partial",
+            "start": 1496,
+            "end": 1520,
+            "note": "Gallery and sentence exist, but the surrounding cards do not visibly dim together.",
+            "rank": "mid",
+            "short": "Gallery and sentence exist, but the surrounding cards do not visibly dim together.",
+            "questions": [
+              8
+            ],
+            "evidence_times_s": [
+              33.6,
+              34,
+              34.4,
+              35
+            ]
+          },
+          {
+            "id": "M4",
+            "severity": "partial",
+            "start": 1858,
+            "end": 1882,
+            "note": "Button and cursor exist; a visible click/pressed-state response is not verified.",
+            "rank": "mid",
+            "short": "Button and cursor exist; a visible click/pressed-state response is not verified.",
+            "questions": [
+              7
+            ],
+            "evidence_times_s": [
+              35.5,
+              35.6666666667,
+              35.8,
+              35.9666666667
+            ]
+          }
+        ],
+        "legend": {
+          "red": "missing from the Low model's video",
+          "yellow": "incomplete in the Mid model's video"
+        }
       },
       "label": "Instruction Following",
       "family_key": "instr",
