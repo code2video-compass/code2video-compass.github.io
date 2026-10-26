@@ -103,11 +103,12 @@ window.C2V_COVERAGE = {
       "cases": [
         "COV-10-01",
         "COV-10-02",
-        "COV-10-03"
+        "COV-10-03",
+        "COV-RELATED-3D-09",
+        "COV-10-05",
+        "COV-10-06"
       ],
-      "related": [
-        "COV-RELATED-3D-09"
-      ]
+      "related": []
     }
   ],
   "cases": {
@@ -1297,11 +1298,11 @@ window.C2V_COVERAGE = {
           "scores": {}
         }
       ],
-      "primary_category_id": 4,
+      "primary_category_id": 10,
       "secondary_category_ids": [
-        10
+        2
       ],
-      "category_role": "cross_category"
+      "category_role": "primary"
     },
     "COV-RELATED-3D-06": {
       "key": "COV-RELATED-3D-06",
@@ -1351,8 +1352,95 @@ window.C2V_COVERAGE = {
       ],
       "category_role": "primary",
       "subtype": "2.2 Product & Service Promotion"
+    },
+    "COV-10-05": {
+      "key": "COV-10-05",
+      "sample": "RTA-0371",
+      "task": "v2v",
+      "title": "Tree canopy and seasonal lighting",
+      "family_key": "coverage",
+      "category_id": 10,
+      "metrics": [],
+      "note": "Full generated videos",
+      "desc": "A procedural tree develops through branching, foliage, changing light, wind, and seasonal stages.",
+      "comparison": "Opus preserves a visible trunk and a complete crown across the lighting and seasonal stages. Haiku retains the branching structure with sparser foliage. Astra produces denser leaves, but the trunk is not visible in several shaded views.",
+      "models": [
+        {
+          "id": "claude_opus_5_5",
+          "name": "Claude Opus 5.5",
+          "rank": "high",
+          "video": "assets/case_studies/coverage/COV-10-05/claude_opus_5_5.mp4",
+          "vposter": "assets/case_studies/coverage/COV-10-05/claude_opus_5_5.jpg",
+          "duration_s": 44.0,
+          "scores": {}
+        },
+        {
+          "id": "claude_haiku_5_5",
+          "name": "Claude Haiku 5.5",
+          "rank": "mid",
+          "video": "assets/case_studies/coverage/COV-10-05/claude_haiku_5_5.mp4",
+          "vposter": "assets/case_studies/coverage/COV-10-05/claude_haiku_5_5.jpg",
+          "duration_s": 35.0,
+          "scores": {}
+        },
+        {
+          "id": "gpt_6_astra",
+          "name": "GPT-6 Astra",
+          "rank": "low",
+          "video": "assets/case_studies/coverage/COV-10-05/gpt_6_astra.mp4",
+          "vposter": "assets/case_studies/coverage/COV-10-05/gpt_6_astra.jpg",
+          "duration_s": 33.0,
+          "scores": {}
+        }
+      ],
+      "label": "3D Motion-example5",
+      "chip_label": "Example 5"
+    },
+    "COV-10-06": {
+      "key": "COV-10-06",
+      "sample": "RTA-0379",
+      "task": "v2v",
+      "title": "Poolside pavilion walkthrough",
+      "family_key": "coverage",
+      "category_id": 10,
+      "metrics": [],
+      "note": "Full generated videos",
+      "desc": "A 3D walkthrough connects a pool, timber pergola, lounge furniture, and a day-to-night lighting change.",
+      "comparison": "Opus maintains a spatial walkthrough of the pool, pavilion, and lounge furniture through the day-to-night change. Sonnet adds denser slatted shadows, but its night scenes have excessive bloom. Haiku reduces the scene to a flatter frontal layout with simpler furnishings.",
+      "models": [
+        {
+          "id": "claude_opus_5_5",
+          "name": "Claude Opus 5.5",
+          "rank": "high",
+          "video": "assets/case_studies/coverage/COV-10-06/claude_opus_5_5.mp4",
+          "vposter": "assets/case_studies/coverage/COV-10-06/claude_opus_5_5.jpg",
+          "duration_s": 18.0,
+          "scores": {}
+        },
+        {
+          "id": "claude_sonnet_5_5",
+          "name": "Claude Sonnet 5.5",
+          "rank": "mid",
+          "video": "assets/case_studies/coverage/COV-10-06/claude_sonnet_5_5.mp4",
+          "vposter": "assets/case_studies/coverage/COV-10-06/claude_sonnet_5_5.jpg",
+          "duration_s": 15.0,
+          "scores": {}
+        },
+        {
+          "id": "claude_haiku_5_5",
+          "name": "Claude Haiku 5.5",
+          "rank": "low",
+          "video": "assets/case_studies/coverage/COV-10-06/claude_haiku_5_5.mp4",
+          "vposter": "assets/case_studies/coverage/COV-10-06/claude_haiku_5_5.jpg",
+          "duration_s": 20.0,
+          "scores": {}
+        }
+      ],
+      "label": "3D Motion-example6",
+      "chip_label": "Example 6"
     }
   },
   "primary_count": 26,
-  "related_count": 2
+  "related_count": 2,
+  "additional_count": 2
 };
