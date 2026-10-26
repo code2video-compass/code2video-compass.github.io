@@ -1666,7 +1666,7 @@ window.C2V_CASES = {
           "yellow": "incomplete in the Mid model's video"
         }
       },
-      "label": "Instruction Following",
+      "label": "Instruction Following-example1",
       "family_key": "instr",
       "family_label": "Instruction Following"
     },

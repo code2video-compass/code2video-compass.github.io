@@ -263,7 +263,7 @@ pre{overflow:auto;padding:20px;background:var(--bg-soft);font-size:13px}
 .cs-chip.active{background:#eef4fa;border-color:var(--blue);color:var(--blue);font-weight:600}
 
 .cs-panel{border:1px solid var(--line);border-radius:8px;padding:24px 26px;background:var(--bg);scroll-margin-top:70px}
-.cs-head h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.cs-head h3,.cs-head h4{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
 .cs-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .cs-tag{font-size:11.5px;padding:3px 9px;border:1px solid var(--line);border-radius:4px;background:var(--bg-soft);color:var(--ink-mute)}
 .cs-desc{margin:12px 0 0;font-size:14.5px!important;color:var(--ink-soft)!important}
@@ -368,6 +368,34 @@ mark.mk-both{background:rgba(190,60,60,.15);color:#8f3030;border-bottom:3px soli
 .updates-note{text-align:center;margin:24px 0 12px;font-size:14px;line-height:1.6;color:#6b7280;}
 
 .cs-unavailable{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;background:#eef0f4;color:#555}.cs-review{font-size:14px;line-height:1.7;margin:12px 0}
+
+/* Two complementary case-study browsers share the existing page typography. */
+.cs-module{margin-top:30px;scroll-margin-top:28px}
+.cs-module+.cs-module{margin-top:44px;padding-top:32px;border-top:1px solid var(--line)}
+.cs-module-head{text-align:left}
+.cs-module-head h3{margin:0;font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.cs-module-head p{margin:8px 0 0;font-size:14px;line-height:1.6;color:var(--ink-mute)}
+.cs-coverage-navigation{gap:14px;margin:20px 0}
+.cs-categories{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px 16px;width:min(100%,1080px);margin:0 auto;padding-bottom:12px;border-bottom:1px solid var(--line-soft)}
+.cs-category{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:8px 2px 10px;text-align:center;border:0;border-radius:0;background:transparent;color:var(--ink-soft);font:400 13px/1.65 var(--font-sans);cursor:pointer}
+.cs-category:hover{color:var(--blue)}
+.cs-category.active{color:var(--blue);font-weight:600}
+.cs-category.active::after{content:"";position:absolute;bottom:1px;left:50%;width:28px;height:2px;background:var(--blue);border-radius:1px;transform:translateX(-50%)}
+.cs-example-picker{display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:7px;min-height:34px}
+.cs-module .cs-chip{font-family:var(--font-sans);padding:5px 12px;cursor:pointer;font-variant-numeric:tabular-nums}
+.cs-module-evaluation .cs-chip{min-width:53px}
+.cs-module-evaluation .cs-chip-row{align-items:center;min-height:35px}
+.cs-module-evaluation .cs-family-label{min-width:208px}
+.cs-module button:focus-visible,.cs-module a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media(max-width:680px){
+  .cs-module{margin-top:25px}
+  .cs-module+.cs-module{margin-top:32px;padding-top:25px}
+  .cs-module-head h3{font-size:21px}
+  .cs-categories{display:flex;justify-content:center;flex-wrap:wrap;gap:3px 18px}
+  .cs-category{padding:7px 0 9px;font-size:12px}
+  .cs-module-evaluation .cs-family-label{min-width:100%;margin-bottom:3px}
+  .cs-module-evaluation .cs-chip-row{gap:7px;margin-bottom:6px}
+}
 
 
 

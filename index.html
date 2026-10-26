@@ -5,8 +5,8 @@
 <title>Code2Video-Compass</title>
 <meta name="description" content="A comprehensive benchmark for general-purpose code-based video generation across T2V, I2V, and V2V.">
 <link rel="icon" type="image/svg+xml" href="assets/compass-icon.svg">
-<link rel="stylesheet" href="style.css?v=62">
-<script src="benchmark-data.js?v=55" defer></script><script src="case-data.js?v=65" defer></script><script src="app.js?v=51" defer></script><script src="case-studies.js?v=62" defer></script>
+<link rel="stylesheet" href="style.css?v=72">
+<script src="benchmark-data.js?v=55" defer></script><script src="case-data.js?v=66" defer></script><script src="coverage-data.js?v=4" defer></script><script src="app.js?v=51" defer></script><script src="case-studies.js?v=71" defer></script>
 </head>
 <body><main class="page">
 <header class="title-block">
@@ -55,7 +55,23 @@
 
 </section>
 <section class="sec" id="case-studies"><h2>Case Studies</h2>
-<p class="sec-note">Side-by-side model outputs with task-specific comparisons.</p>
+<section class="cs-module cs-module-coverage" id="animation-coverage" aria-labelledby="coverage-heading">
+<header class="cs-module-head"><h3 id="coverage-heading">Benchmark Coverage</h3><p>Representative examples across 10 animation categories.</p></header>
+<div id="cov-chips" class="cs-chips cs-coverage-navigation"></div>
+<article id="cov-panel" class="cs-panel" aria-live="polite"></article>
+<div id="cov-lightbox" class="cs-lightbox" hidden>
+  <button class="cs-lb-close" id="cov-lb-close" type="button" aria-label="Close viewer">✕</button>
+  <button class="cs-lb-nav prev" id="cov-lb-prev" type="button" aria-label="Previous video">‹</button>
+  <figure class="cs-lb-figure">
+    <video id="cov-lb-video" controls playsinline preload="metadata"></video>
+    <img id="cov-lb-img" alt="" hidden>
+    <figcaption id="cov-lb-cap"></figcaption>
+  </figure>
+  <button class="cs-lb-nav next" id="cov-lb-next" type="button" aria-label="Next video">›</button>
+</div>
+</section>
+<section class="cs-module cs-module-evaluation" id="evaluation-dimensions" aria-labelledby="evaluation-heading">
+<header class="cs-module-head"><h3 id="evaluation-heading">Evaluation Metrics</h3><p>Model comparisons across objective metrics and subjective quality dimensions.</p></header>
 <div id="cs-chips" class="cs-chips"></div>
 <article id="cs-panel" class="cs-panel" aria-live="polite"></article>
 <div id="cs-lightbox" class="cs-lightbox" hidden>
@@ -68,6 +84,7 @@
   </figure>
   <button class="cs-lb-nav next" id="cs-lb-next" type="button" aria-label="Next video">›</button>
 </div>
+</section>
 </section>
 <section class="sec" id="citation"><h2>Citation</h2><p>If you find Code2Video-Compass useful, please consider citing our paper:</p><div class="bibtex"><button class="copy-btn" id="copy-bibtex" type="button"><span id="copy-bibtex-label">Copy</span></button><pre><code id="bibtex"></code></pre></div></section>
 <section class="sec" id="contact"><h2><img class="sec-icon" src="assets/compass-icon.svg" alt="" width="30" height="30">Contact Us</h2><p>If you have any questions about Code2Video-Compass, feel free to reach out to us at <a href="mailto:chenzh26@m.fudan.edu.cn">chenzh26@m.fudan.edu.cn</a>.</p></section>

@@ -1,6 +1,6 @@
 /* ============================================================
    Case Studies — curated examples with embedded model videos.
-   Data: case-data.js (window.C2V_CASES). Per case: input material
+   Data: case-data.js and coverage-data.js. Per case: input material
    on top (keyframe / clip / prompt, annotated for IF), output
    videos three per row, objective metrics under each applicable output. Lightbox with
    prev/next and keyboard navigation.
@@ -10,15 +10,92 @@
   // a reload always starts at the top of the page (no hash deep-link)
   if (window.history && 'scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
   if (!window.location.hash) window.scrollTo(0, 0);
-  const C = window.C2V_CASES;
-  const $ = id => document.getElementById(id);
+  let activeModule = 'cs';
+  let viewerModule = null;
+
+  function mount(C, prefix, coverage = false) {
+  if (!C) return;
+  const $ = id => document.getElementById(id.replace(/^cs-/, `${prefix}-`));
+  const module = document.getElementById(coverage ? 'animation-coverage' : 'evaluation-dimensions');
+  module.addEventListener('pointerdown', () => { activeModule = prefix; });
+  module.addEventListener('focusin', () => { activeModule = prefix; });
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const TASK_LABEL = {t2v: 'T2V · Text to Video', i2v: 'I2V · Image to Video', v2v: 'V2V · Video to Video'};
-  const RANK_LABEL = {high: 'High', mid: 'Mid', low: 'Low'};
+  const TASK_LABEL = {t2v: 'Text to Video', i2v: 'Image to Video', v2v: 'Video to Video'};
+  const RANK_LABEL = coverage
+    ? {high: 'Good', mid: 'Fair', low: 'Poor'}
+    : {high: 'High', mid: 'Mid', low: 'Low'};
   // leaderboard dual-level tier per family: automatic metrics vs judged dimensions
   const TIER_OF = {vq: 'OBJ', ta: 'OBJ', if: 'OBJ', cf: 'OBJ', instr: 'SUB', hl: 'SUB'};
-  const flat = C.families.flatMap(f => f.cases);
+  const flat = C.families.flatMap(f => [...f.cases, ...(f.related || [])]);
   let caseIdx = 0, zoom = -1;
+  let viewerTrigger = null;
+  const familyLastCase = new Map();
+  const ABBREVIATIONS = {
+    'Video Quality': 'VQ', 'Text Alignment': 'TA', 'Image Fidelity': 'ImgF',
+    'Clip Fidelity': 'ClipF', 'Instruction Following': 'IF',
+    'Content Coherence': 'NC', 'Visual Design': 'VD',
+    'Motion Quality': 'MQ', 'Viewer Engagement': 'VE'
+  };
+
+  function compactLabel(c) {
+    const label = c.label || c.title;
+    const match = label.match(/^(.*?)-example(\d+)$/i);
+    const name = match ? match[1] : label;
+    return `${ABBREVIATIONS[name] || name}${match ? '-example' + match[2] : ''}`;
+  }
+
+  function selectCase(key, focusKey) {
+    const index = flat.indexOf(key);
+    if (index < 0) return;
+    caseIdx = index;
+    if (coverage) familyLastCase.set(String(C.cases[key].category_id), key);
+    render();
+    if (focusKey) $('cs-chips').querySelector(`[data-nav-key="${focusKey}"]`)?.focus({preventScroll: true});
+  }
+
+  function exampleButton(key) {
+    const c = C.cases[key];
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'cs-chip' + (key === flat[caseIdx] ? ' active' : '');
+    chip.setAttribute('aria-pressed', String(key === flat[caseIdx]));
+    chip.dataset.navKey = key;
+    chip.title = `${c.label} · ${c.title}`;
+    chip.setAttribute('aria-label', c.label);
+    chip.textContent = coverage ? c.chip_label : compactLabel(c);
+    chip.addEventListener('click', () => selectCase(key, key));
+    return chip;
+  }
+
+  function coverageNavigation(box) {
+    const selected = String(C.cases[flat[caseIdx]].category_id);
+    const categories = document.createElement('div');
+    categories.className = 'cs-categories';
+    categories.setAttribute('role', 'group');
+    categories.setAttribute('aria-label', 'Animation category');
+    for (const fam of C.families) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'cs-category' + (selected === fam.key ? ' active' : '');
+      button.dataset.navKey = 'category-' + fam.key;
+      button.setAttribute('aria-pressed', String(selected === fam.key));
+      button.title = fam.label;
+      button.textContent = fam.short_label || fam.label;
+      button.addEventListener('click', () => selectCase(familyLastCase.get(fam.key) || fam.cases[0], 'category-' + fam.key));
+      categories.appendChild(button);
+    }
+    box.appendChild(categories);
+    const family = C.families.find(f => f.key === selected);
+    const examples = document.createElement('div');
+    examples.className = 'cs-example-picker';
+    examples.setAttribute('role', 'group');
+    examples.setAttribute('aria-label', family.label + ' examples');
+    family.cases.forEach(key => examples.appendChild(exampleButton(key)));
+    if (family.related?.length) {
+      family.related.forEach(key => examples.appendChild(exampleButton(key)));
+    }
+    box.appendChild(examples);
+  }
 
   const metricName = id => {
     const m = (window.COMPASS_DATA?.metrics || []).find(x => x.id === id);
@@ -29,6 +106,7 @@
   function chipRow() {
     const box = $('cs-chips');
     box.innerHTML = '';
+    if (coverage) return coverageNavigation(box);
     for (const fam of C.families) {
       const row = document.createElement('div');
       row.className = 'cs-chip-row';
@@ -38,15 +116,7 @@
       label.innerHTML = `<i class="cs-tier ${tier === 'SUB' ? 'sub' : 'obj'}" title="${tier === 'SUB' ? 'Subjective — judged dimensions' : 'Objective — automatic metrics'}">${tier}</i>${esc(fam.label)}`;
       row.appendChild(label);
       for (const key of fam.cases) {
-        const c = C.cases[key];
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'cs-chip' + (key === flat[caseIdx] ? ' active' : '');
-        chip.setAttribute('role', 'tab');
-        chip.setAttribute('aria-selected', String(key === flat[caseIdx]));
-        chip.textContent = c.label || `${c.key} · ${c.title}`;
-        chip.addEventListener('click', () => { caseIdx = flat.indexOf(key); render(); });
-        row.appendChild(chip);
+        row.appendChild(exampleButton(key));
       }
       box.appendChild(row);
     }
@@ -132,7 +202,7 @@
       ${box}
       <figcaption>
         <span class="cs-model">${rank}<b>${esc(m.name)}</b></span>
-        <span class="cs-scores">${clip}${scoreChips(m, c.metrics)}</span>
+        ${c.metrics.length || m.clip ? `<span class="cs-scores">${clip}${scoreChips(m, c.metrics)}</span>` : ''}
         ${m.canonical_time != null ? `<small>Scored frame: ${Number(m.canonical_time).toFixed(2)}s</small>` : ''}
       </figcaption>
     </figure>`;
@@ -140,13 +210,16 @@
 
   function render() {
     const c = C.cases[flat[caseIdx]];
-    const tags = [`<span class="cs-tag">${TASK_LABEL[c.task]}</span>`,
-      `<span class="cs-tag">Metrics: ${c.metrics.map(k => `${k} · ${esc(metricName(k))}`).join(', ')}</span>`];
+    const tags = [`<span class="cs-tag">${TASK_LABEL[c.task]}</span>`];
+    if (c.metrics.length) tags.push(`<span class="cs-tag">Metrics: ${c.metrics.map(k => `${k} · ${esc(metricName(k))}`).join(', ')}</span>`);
+    if (coverage && c.subtype) tags.push(`<span class="cs-tag">${esc(c.subtype)}</span>`);
     if (c.note) tags.push(`<span class="cs-tag cs-tag-note">${esc(c.note)}</span>`);
+    const analysis = coverage ? c.comparison : c.desc;
+    $('cs-panel').querySelectorAll('video').forEach(v => v.pause());
     $('cs-panel').innerHTML = `
-      <header class="cs-head"><h3>${esc(c.label)}</h3><p class="cs-desc">${esc(c.title)}</p>
+      <header class="cs-head"><h4>${esc(c.label)}</h4>${c.label !== c.title ? `<p class="cs-desc">${esc(c.title)}</p>` : ''}
         <div class="cs-meta">${tags.join('')}</div>
-        ${c.desc ? `<p class="cs-desc">${esc(c.desc)}</p>` : ''}</header>
+        ${analysis ? `<p class="cs-desc cs-analysis">${esc(analysis)}</p>` : ''}</header>
       ${inputBlock(c)}
       <div class="cs-grid">${c.models.map((m, i) => videoCell(c, m, i)).join('')}</div>`;
     $('cs-panel').querySelectorAll('[data-zoom]').forEach(b =>
@@ -156,6 +229,8 @@
 
   /* ---------- lightbox ---------- */
   function openViewer(i) {
+    viewerTrigger = document.activeElement;
+    viewerModule = prefix;
     zoom = i;
     $('cs-lightbox').hidden = false;
     document.body.style.overflow = 'hidden';
@@ -167,6 +242,8 @@
     $('cs-lb-video').removeAttribute('src');
     $('cs-lb-video').load();
     document.body.style.overflow = '';
+    viewerModule = null;
+    viewerTrigger?.focus({preventScroll: true});
   }
   function showViewer() {
     const c = C.cases[flat[caseIdx]];
@@ -197,7 +274,9 @@
   $('cs-lb-close').addEventListener('click', closeViewer);
   $('cs-lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeViewer(); });
   document.addEventListener('keydown', e => {
+    if (viewerModule && viewerModule !== prefix) return;
     if ($('cs-lightbox').hidden) {
+      if (activeModule !== prefix || !e.target.closest('.cs-module') || e.target.closest('video,button,input,textarea,select,[contenteditable]')) return;
       if (e.key === 'ArrowLeft') stepCase(-1);
       if (e.key === 'ArrowRight') stepCase(1);
       return;
@@ -208,4 +287,8 @@
   });
 
   render();
+  return selectCase;
+  }
+  mount(window.C2V_CASES, 'cs');
+  mount(window.C2V_COVERAGE, 'cov', true);
 })();
