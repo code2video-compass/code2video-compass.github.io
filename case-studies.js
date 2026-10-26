@@ -212,7 +212,6 @@
     const c = C.cases[flat[caseIdx]];
     const tags = [`<span class="cs-tag">${TASK_LABEL[c.task]}</span>`];
     if (c.metrics.length) tags.push(`<span class="cs-tag">Metrics: ${c.metrics.map(k => `${k} · ${esc(metricName(k))}`).join(', ')}</span>`);
-    if (coverage && c.subtype) tags.push(`<span class="cs-tag">${esc(c.subtype)}</span>`);
     if (c.note) tags.push(`<span class="cs-tag cs-tag-note">${esc(c.note)}</span>`);
     const analysis = coverage ? c.comparison : c.desc;
     $('cs-panel').querySelectorAll('video').forEach(v => v.pause());
