@@ -141,7 +141,7 @@ window.C2V_COVERAGE = {
           "name": "Kimi K3",
           "rank": "mid",
           "video": "assets/case_studies/coverage/COV-01-01/kimi_k3.mp4",
-          "vposter": "assets/case_studies/coverage/COV-01-01/kimi_k3.jpg",
+          "vposter": "assets/case_studies/coverage/COV-01-01/kimi_k3-26s.jpg",
           "duration_s": 110.0,
           "scores": {}
         },
