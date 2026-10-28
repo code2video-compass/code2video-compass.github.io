@@ -5,7 +5,7 @@
 <title>Code2Video-Compass</title>
 <meta name="description" content="A comprehensive benchmark for general-purpose code-based video generation across T2V, I2V, and V2V.">
 <link rel="icon" type="image/svg+xml" href="assets/compass-icon.svg">
-<link rel="stylesheet" href="style.css?v=72">
+<link rel="stylesheet" href="style.css?v=73">
 <script src="benchmark-data.js?v=55" defer></script><script src="case-data.js?v=66" defer></script><script src="coverage-data.js?v=7" defer></script><script src="app.js?v=51" defer></script><script src="case-studies.js?v=72" defer></script>
 </head>
 <body><main class="page">
@@ -18,6 +18,13 @@
 <a class="pill" href="https://github.com/code2video-compass/Code2Video-Compass" target="_blank" rel="noopener">[ Code ]</a>
 <a class="pill" href="https://huggingface.co/datasets/code2video-compass/Code2Video-Compass" target="_blank" rel="noopener">[ Dataset ]</a>
 </nav>
+<nav class="section-nav" aria-label="Page sections">
+<a href="#overview-video">Overview Video</a>
+<a href="#abstract-section">Abstract</a>
+<a href="#dataset-statistics">Dataset Statistics</a>
+<a href="#leaderboard">Leaderboard</a>
+<a href="#case-studies">Case Studies</a>
+</nav>
 </header>
 <figure class="fig">
 <a href="assets/figures/teaser.jpg?v=20261022" target="_blank" rel="noopener"><img src="assets/figures/teaser_web.jpg?v=20261022" alt="Code2Video-Compass overview: three input modalities, a general-purpose code stack, 15 models, 10 video categories, and dual-level evaluation."></a>
@@ -27,8 +34,8 @@
 <figure class="fig fig-demo"><video controls playsinline preload="metadata" poster="assets/demo-video-poster-01s.jpg?v=20261022-r10"><source src="assets/demo-video.mp4?v=20261027-v13-unified112" type="video/mp4"></video>
 <figcaption><b>Code2Video-Compass: Overview.</b> This video introduces Code2Video-Compass, showcasing code-based video generation across T2V, I2V, and V2V settings, along with the benchmark's task design, evaluation framework, and representative model results.</figcaption></figure>
 </section>
-<section class="sec"><h2>Abstract</h2><p id="abstract"></p></section>
-<section class="sec"><h2>Dataset Statistics</h2>
+<section class="sec" id="abstract-section"><h2>Abstract</h2><p id="abstract"></p></section>
+<section class="sec" id="dataset-statistics"><h2>Dataset Statistics</h2>
 <p>Code2Video-Compass combines 385 independent tasks with 1,719 aligned tasks derived from 573 source videos, covering T2V, I2V, and V2V.</p>
 <figure class="fig"><a href="assets/figures/construction.jpg?v=44" target="_blank" rel="noopener"><img src="assets/figures/construction.jpg?v=44" loading="lazy" alt="Data construction pipeline with independent and paired task sets."></a>
 <figcaption><b>Data construction pipeline.</b> (A) Independent tasks are developed from curated text seeds, images, and video clips. (B) Paired tasks share a complete source video across T2V, I2V, and V2V. (C) Both sets undergo prompt construction, QA checklist development, and annotation, yielding 2,104 tasks.</figcaption></figure>

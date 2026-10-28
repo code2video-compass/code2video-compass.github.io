@@ -23,6 +23,8 @@
 
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: var(--font-sans);
@@ -123,6 +125,59 @@ a:hover { color: var(--blue-deep); text-decoration: underline; }
   border-color: var(--line-soft);
   cursor: default;
 }
+.section-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 32px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 20px auto 0;
+  padding: 0;
+}
+.section-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 5px 0;
+  color: var(--ink-mute);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+.section-nav a::after {
+  content: "";
+  position: absolute;
+  right: 22%;
+  bottom: 2px;
+  left: 22%;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transition: transform 160ms ease;
+}
+.section-nav a:hover,
+.section-nav a:focus-visible {
+  color: var(--blue);
+  text-decoration: none;
+}
+.section-nav a:hover::after,
+.section-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+@media (max-width: 640px) {
+  .section-nav { gap: 2px 22px; margin-top: 15px; }
+  .section-nav a { min-height: 40px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .section-nav a, .section-nav a::after { transition: none; }
+}
 .fig figcaption b { color: var(--ink-soft); }
 
 /* ---------------- Figures ---------------- */
@@ -157,6 +212,7 @@ a:hover { color: var(--blue-deep); text-decoration: underline; }
 
 /* ---------------- Sections ---------------- */
 .sec { margin-top: 64px; }
+.sec[id] { scroll-margin-top: 28px; }
 
 .sec h2 {
   margin: 0 0 20px;
